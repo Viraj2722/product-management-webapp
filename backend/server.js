@@ -15,14 +15,14 @@ app.use(express.json());
 
 // Serve static files in production
 if (process.env.NODE_ENV === "production") {
-    const frontendPath = path.join(__dirname, "frontend", "dist");
+    const frontendPath = path.join(__dirname, "../frontend/dist");
     console.log("Serving static files from:", frontendPath);
     app.use(express.static(frontendPath));
 }
 
 // Serve the index.html file for all other routes
 app.get("*", (req, res) => {
-    const indexPath = path.resolve(__dirname, "frontend", "dist", "index.html");
+    const indexPath = path.resolve(__dirname, "../frontend/dist", "index.html");
     console.log("Serving file:", indexPath);
     res.sendFile(indexPath);
 });
