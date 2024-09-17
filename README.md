@@ -110,10 +110,3 @@ Feel free to open issues or submit pull requests if you find any bugs or have im
 
 To contribute, please fork the repository, make your changes, and submit a pull request with a clear description of the changes and the reason for them.
 
-## License
-
-This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to customize any sections or add additional information specific to your project!
