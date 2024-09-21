@@ -17,12 +17,7 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static(frontendPath));
 }
 
-app.get("*", (req, res) => {
-    const indexPath = path.resolve(__dirname, "../frontend/dist", "index.html");
-    console.log("Serving file:", indexPath);
-    res.sendFile(indexPath);
-});
-
+// API Routes
 app.get("/api/products", async (req, res) => {
     try {
         const products = await Product.find({});
