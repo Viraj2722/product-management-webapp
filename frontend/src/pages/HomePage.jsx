@@ -10,29 +10,28 @@ const HomePage = () => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
-  console.log("products", products);
 
   return (
-    <Container maxW="container.xl" py={12}>
-      <VStack spacing={8}>
+    <Container
+      maxW="container.xl"
+      py={{ base: 6, sm: 8, md: 12 }}
+      px={{ base: 4, sm: 6, md: 8 }}
+    >
+      <VStack spacing={{ base: 6, sm: 8 }}>
         <Text
-          fontSize={"30"}
-          fontWeight={"bold"}
-          bgGradient={"linear(to-r, cyan.400, blue.500)"}
-          bgClip={"text"}
-          textAlign={"center"}
+          fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+          fontWeight="bold"
+          bgGradient="linear(to-r, cyan.400, blue.500)"
+          bgClip="text"
+          textAlign="center"
         >
           Current Products 🚀
         </Text>
 
         <SimpleGrid
-          columns={{
-            base: 1,
-            md: 2,
-            lg: 3,
-          }}
-          spacing={10}
-          w={"full"}
+          columns={{ base: 1, sm: 2, lg: 3 }}
+          spacing={{ base: 6, sm: 8, md: 10 }}
+          w="full"
         >
           {products.map((product) => (
             <ProductCard key={product._id} product={product} />
@@ -41,13 +40,13 @@ const HomePage = () => {
 
         {products.length === 0 && (
           <Text
-            fontSize="xl"
-            textAlign={"center"}
+            fontSize={{ base: "lg", sm: "xl" }}
+            textAlign="center"
             fontWeight="bold"
             color="gray.500"
           >
             No products found 😢{" "}
-            <Link to={"/create"}>
+            <Link to="/create">
               <Text
                 as="span"
                 color="blue.500"

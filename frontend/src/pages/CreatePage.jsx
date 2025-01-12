@@ -18,70 +18,66 @@ const CreatePage = () => {
     price: "",
     image: "",
   });
-
   const { createProduct } = useProductStore();
   const toast = useToast();
+
   const handleAddProduct = async () => {
     const { success, message } = await createProduct(newProduct);
-    if (!success) {
-      toast({
-        title: "Error",
-        description: message,
-        status: "error",
-        isClosable: true,
-      });
-    } else {
-      toast({
-        title: "Success",
-        description: message,
-        status: "success",
-        isClosable: true,
-      });
+    toast({
+      title: success ? "Success" : "Error",
+      description: message,
+      status: success ? "success" : "error",
+      isClosable: true,
+    });
+    if (success) {
+      setNewProduct({ name: "", price: "", image: "" });
     }
-    setNewProduct({ name: "", price: "", image: "" });
   };
+
   return (
-    <Container maxWidth={"container.sm"}>
-      <VStack spacing={6}>
-        <Heading as={"h1"} size={"2xl"} textAlign={"center"}>
+    <Container maxW="container.sm" px={{ base: 4, sm: 6 }}>
+      <VStack spacing={{ base: 4, sm: 6 }} py={{ base: 6, sm: 8 }}>
+        <Heading as="h1" size={{ base: "xl", sm: "2xl" }} textAlign="center">
           Create Product
         </Heading>
         <Box
-          w={"full"}
+          w="full"
           bg={useColorModeValue("white", "gray.900")}
-          p={6}
-          rounded={"lg"}
-          shadow={"md"}
+          p={{ base: 4, sm: 6 }}
+          rounded="lg"
+          shadow="md"
         >
-          <VStack spacing={4}>
+          <VStack spacing={{ base: 3, sm: 4 }}>
             <Input
               placeholder="Product Name"
-              name="name"
               value={newProduct.name}
               onChange={(e) =>
                 setNewProduct({ ...newProduct, name: e.target.value })
               }
+              size={{ base: "sm", sm: "md" }}
             />
             <Input
               placeholder="Price"
-              name="name"
+              type="number"
               value={newProduct.price}
               onChange={(e) =>
                 setNewProduct({ ...newProduct, price: e.target.value })
               }
+              size={{ base: "sm", sm: "md" }}
             />
             <Input
               placeholder="Image URL"
-              name="image"
               value={newProduct.image}
               onChange={(e) =>
                 setNewProduct({ ...newProduct, image: e.target.value })
               }
+              size={{ base: "sm", sm: "md" }}
             />
             <Button
               colorScheme="blue"
-              width={"full"}
+              width="full"
               onClick={handleAddProduct}
+              size={{ base: "sm", sm: "md" }}
             >
               Add Product
             </Button>
